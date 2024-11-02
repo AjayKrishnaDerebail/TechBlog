@@ -7,8 +7,13 @@ import java.sql.SQLException;
 public class ConnectionProvider {
     private ConnectionProvider() {}
 
-    public static Connection getConnection() throws ClassNotFoundException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
+    public static Connection getConnection() {
+        try
+        {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         String url = "jdbc:mysql://127.0.0.1:3306/techblog";
         String username = "ajaykdbadmin";
         String password = "Derebail@1234";

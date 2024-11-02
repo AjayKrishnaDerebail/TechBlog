@@ -1,0 +1,19 @@
+.primary-background{
+    background: #3F51B5;
+}
+
+.navbar-background{
+    background: #D32F2F;
+}
+
+.container-background{
+    clip-path: polygon(0 0, 100% 1%, 100% 93%, 67% 100%, 32% 93%, 0 100%);
+}
+
+.height-90vh{
+    height: 90vh;
+}
+
+.display-none{
+    display: none;
+}

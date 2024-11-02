@@ -48,6 +48,7 @@
     </dependencies>
 
     <build>
-        <finalName>TechBlog</finalName>
+        <outputDirectory>${project.basedir}/target</outputDirectory>
     </build>
+    <!--This ensures that target folder is created only in the root of the project-->
 </project>
