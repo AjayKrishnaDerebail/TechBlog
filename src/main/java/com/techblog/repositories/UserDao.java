@@ -19,8 +19,6 @@ public class UserDao {
         @SuppressWarnings("SqlNoDataSourceInspection")
         String query="insert into user(name,email,password,gender,about) values(?,?,?,?,?)";
         try{
-
-
             PreparedStatement statement = this.connection.prepareStatement(query);
             statement.setString(1,user.getUsername());
             statement.setString(2,user.getEmail());
@@ -49,10 +47,13 @@ public class UserDao {
             ResultSet set = statement.executeQuery();
             while(set.next()){
                 user = new User();
-                String name = set.getString("name");
-                String userEmail = set.getString("email");
-                user.setUsername(name);
-                user.setEmail(userEmail);
+                user.setUsername(set.getString("name"));
+                user.setEmail(set.getString("email"));
+                user.setProfile(set.getString("profile"));
+                user.setId(set.getInt("id"));
+                user.setTimestamp(set.getTimestamp("registration_date"));
+                user.setAbout(set.getString("about"));
+                user.setGender(set.getString("gender"));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

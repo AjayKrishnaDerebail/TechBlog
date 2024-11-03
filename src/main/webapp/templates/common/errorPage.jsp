@@ -8,10 +8,10 @@
     <body>
         <%@include file="navbar.jsp"%>
         <div class="container text-center">
-            <img src="../../images/computer.png" alt="Computer" class="img-fluid">
+            <img src="${pageContext.request.contextPath}/images/error.png" alt="Computer" class="img-fluid">
             <h3>Something went wrong</h3>
             <%= exception %>
-            <a href="../../templates/index.jsp"
+            <a href="${pageContext.request.contextPath}/templates/index.jsp"
                class="btn primary-background btn-lg text-white mt-3">Go Back</a>
         </div>
     </body>
