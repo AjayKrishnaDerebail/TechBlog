@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark navbar-background text-white">
-    <a href="${pageContext.request.contextPath}/templates/index.jsp" class="navbar-brand" href="#">
+    <a href="${pageContext.request.contextPath}/templates/index.jsp" class="navbar-brand">
         <span class="fa fa-area-chart"></span> Techblog</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"

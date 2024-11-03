@@ -1,6 +1,6 @@
 <%@ page import="com.techblog.entities.User" %>
 <%@ page import="java.util.Objects" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page errorPage="common/errorPage.jsp" %>
 <%
     User user = (User) session.getAttribute("currentUser");

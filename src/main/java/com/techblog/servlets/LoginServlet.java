@@ -10,15 +10,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Objects;
 
 public class LoginServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
         response.setContentType("text/html");
-
-        PrintWriter out = response.getWriter();
-
         String password = request.getParameter("userPassword");
         String email = request.getParameter("email");
 
@@ -36,7 +32,5 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("currentUser" , user);
             response.sendRedirect(request.getContextPath() + "/templates/profile.jsp");
         }
-
-
     }
 }
