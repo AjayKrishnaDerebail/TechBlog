@@ -1,5 +1,6 @@
 package com.techblog.servlets;
 
+import com.techblog.entities.Message;
 import com.techblog.entities.User;
 import com.techblog.repositories.ConnectionProvider;
 import com.techblog.repositories.UserDao;
@@ -25,7 +26,11 @@ public class LoginServlet extends HttpServlet {
         User user = userDao.getUserByEmailAndPassword(email,password);
 
         if(Objects.isNull(user)){
-            out.println("No such user exists");
+            //out.println("No such user exists");
+            Message message = new Message("Invalid Details","error","alert alert-danger");
+            HttpSession session = request.getSession();
+            session.setAttribute("message",message);
+            response.sendRedirect(request.getContextPath() +"/templates/login.jsp");
         } else{
             HttpSession session = request.getSession();
             session.setAttribute("currentUser" , user);

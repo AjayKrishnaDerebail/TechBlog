@@ -11,9 +11,17 @@
         <servlet-name>registerServlet</servlet-name>
         <servlet-class>com.techblog.servlets.RegisterServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>logoutServlet</servlet-name>
+        <servlet-class>com.techblog.servlets.LogoutServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>registerServlet</servlet-name>
         <url-pattern>/registerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>logoutServlet</servlet-name>
+        <url-pattern>/logoutServlet</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>loginServlet</servlet-name>

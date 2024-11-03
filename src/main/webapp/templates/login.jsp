@@ -1,3 +1,5 @@
+<%@ page import="com.techblog.entities.Message" %>
+<%@ page import="java.util.Objects" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
     <head>
@@ -15,6 +17,17 @@
                                 <span class="fa fa-user-plus fa-3x"></span>
                                 <p>Login here</p>
                             </div>
+                            <%
+                                Message message=(Message) session.getAttribute("message");
+                                if(Objects.nonNull(message)){
+                            %>
+                            <div class="alert <%= message.getCssClass()%>" role="alert">
+                                <%= message.getContent()%>
+                            </div>
+                            <%
+                                    session.removeAttribute("message");
+                                }
+                            %>
                             <div class="card-body">
                                 <form action="${pageContext.request.contextPath}/loginServlet" method="post" id="loginForm">
                                     <div class="form-group">

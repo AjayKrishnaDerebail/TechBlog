@@ -3,15 +3,23 @@
 }
 
 .navbar-background{
-    background: #D32F2F;
+    background: #333333;
 }
 
 .container-background{
-    clip-path: polygon(0 0, 100% 1%, 100% 93%, 67% 100%, 32% 93%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 30%, 100% 90%, 60% 100%, 30% 91%, 0 100%, 0% 30%);
 }
 
 .height-90vh{
     height: 90vh;
+}
+
+.navbar-nav .nav-item {
+    list-style-type: none; /* Removes dots */
+}
+
+.navbar-nav .nav-item::marker {
+    content: none;
 }
 
 .display-none{

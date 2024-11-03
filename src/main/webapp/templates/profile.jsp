@@ -14,8 +14,11 @@
         <%@include file="common/headerLinks.jsp"%>
     </head>
     <body>
+        <%@include file="common/logoutNavbar.jsp"%>
         <%= user.getUsername() %>
         <br>
         <%= user.getEmail() %>
+
+        <%@include file="common/scriptLinks.jsp"%>
     </body>
 </html>

@@ -50,9 +50,9 @@ public class UserDao {
             while(set.next()){
                 user = new User();
                 String name = set.getString("name");
-                String email1 = set.getString("email");
+                String userEmail = set.getString("email");
                 user.setUsername(name);
-                user.setEmail(email1);
+                user.setEmail(userEmail);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
