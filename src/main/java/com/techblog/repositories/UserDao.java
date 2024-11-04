@@ -60,4 +60,27 @@ public class UserDao {
         }
         return user;
     }
+
+    public boolean updateUser(User user){
+        boolean flag =false;
+        try{
+            @SuppressWarnings("SqlNoDataSourceInspection") String query= "update user set name=? , email = ? , gender= ?, about= ? , profile=? where id = ?";
+            PreparedStatement preparedStatement = this.connection.prepareStatement(query);
+            //set values
+            preparedStatement.setString(1,user.getUsername());
+            preparedStatement.setString(2,user.getEmail());
+            preparedStatement.setString(3,user.getGender());
+            preparedStatement.setString(4,user.getAbout());
+            preparedStatement.setString(5,user.getProfile());
+            preparedStatement.setInt(6,user.getId());
+
+            preparedStatement.executeUpdate();
+            flag = true;
+
+        }catch (SQLException e){
+            //noinspection CallToPrintStackTrace
+            e.printStackTrace();
+        }
+        return flag;
+    }
 }

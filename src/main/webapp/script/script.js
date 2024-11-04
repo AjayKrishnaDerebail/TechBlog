@@ -2,6 +2,29 @@
 
 $(document).ready(function() {
     console.log("Page is ready!");
+    registrationFormValidation();
+    editProfile();
+});
+
+function editProfile(){
+    let editStatus=false;
+    $("#edit-profile-btn").click(function(){
+
+        if(editStatus===false){
+            $("#profile-details").hide();
+            $("#profile-edit").show();
+            editStatus=true;
+            $(this).text("back");
+        }else{
+            $("#profile-details").show();
+            $("#profile-edit").hide();
+            editStatus=false;
+            $(this).text("edit");
+        }
+    });
+}
+
+function registrationFormValidation(){
     $("#registrationForm").on("submit", function(event) {
         event.preventDefault();
         let f = new FormData(this);
@@ -38,4 +61,4 @@ $(document).ready(function() {
             contentType: false
         });
     });
-});
+}

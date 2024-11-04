@@ -34,7 +34,7 @@
         </ul>
         <ul class="navbar na mr-right list-unstyled">
             <li class="nav-item">
-                <a class="nav-link text-white" href="#!" data-toggle="modal" data-target="#userModal">
+                <a class="nav-link text-white" href="#" data-toggle="modal" data-target="#userModal">
                     <span class="fa fa-user-plus"></span>
                     <%= user.getUsername() %>
                 </a>
@@ -49,53 +49,4 @@
     </div>
 </nav>
 
-<!-- Button trigger modal -->
-
-<!-- Modal -->
-<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header primary-background text-white">
-                <h5 class="modal-title" id="exampleModalLabel">User details</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="container text-center">
-                    <img src="${pageContext.request.contextPath}/images/<%= user.getProfile()%>"
-                         alt="Computer" class="img-fluid width-50percent">
-                    <h5 class="modal-title" id="userNameInModal"><%= user.getUsername() %></h5>
-                    <table class="table">
-                        <tbody>
-                        <tr>
-                            <td>Id</td>
-                            <td><%= user.getId() %></td>
-                        </tr>
-                        <tr>
-                            <td>Email</td>
-                            <td><%= user.getEmail() %></td>
-                        </tr>
-                        <tr>
-                            <td>Gender</td>
-                            <td><%= user.getGender() %></td>
-                        </tr>
-                        <tr>
-                            <td>About</td>
-                            <td><%= user.getAbout() %></td>
-                        </tr>
-                        <tr>
-                            <td>Registered date</td>
-                            <td><%= user.getTimestamp() %></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Edit</button>
-            </div>
-        </div>
-    </div>
-</div>
+<%@include file="showProfileAndEditProfile.jsp"%>

@@ -15,6 +15,14 @@
         <servlet-name>logoutServlet</servlet-name>
         <servlet-class>com.techblog.servlets.LogoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>editProfileServlet</servlet-name>
+        <servlet-class>com.techblog.servlets.EditServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>editProfileServlet</servlet-name>
+        <url-pattern>/editProfileServlet</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>registerServlet</servlet-name>
         <url-pattern>/registerServlet</url-pattern>
