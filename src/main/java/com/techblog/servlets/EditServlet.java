@@ -40,7 +40,7 @@ public class EditServlet extends HttpServlet {
         user.setAbout(about);
 
         if (Objects.nonNull(imageName)) {
-            user.setProfile(imageName);
+            user.setProfileImage(imageName);
         }
 
         //Save in database

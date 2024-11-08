@@ -12,8 +12,8 @@
             </div>
             <div class="modal-body">
                 <div class="container text-center">
-                    <img src="${pageContext.request.contextPath}/images/<%= user.getProfile()%>"
-                         alt="Computer" class="img-fluid width-50percent">
+                    <img src="${pageContext.request.contextPath}/images/<%= user.getProfileImage()%>"
+                         alt=<%= user.getProfileImage() %> class="img-fluid">
                     <h5 class="modal-title" id="userNameInModal"><%= user.getUsername() %></h5>
                     <div id="profile-details">
                         <table class="table">
@@ -72,8 +72,12 @@
                                 <tr>
                                     <td>Gender:</td>
                                     <td>
-                                        <input type="radio" name="userGender" value="male"> Male
-                                        <input type="radio" name="userGender" value="female"> Female
+                                        <input type="radio" name="userGender"
+                                               value="male" <%= user.getGender().equals("male") ? "checked" : "" %>>
+                                        Male
+                                        <input type="radio" name="userGender"
+                                               value="female" <%= user.getGender().equals("female") ? "checked" : "" %>>
+                                        Female
                                     </td>
                                 </tr>
                                 <tr>

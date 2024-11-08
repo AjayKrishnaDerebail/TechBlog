@@ -49,7 +49,7 @@ public class UserDao {
                 user = new User();
                 user.setUsername(set.getString("name"));
                 user.setEmail(set.getString("email"));
-                user.setProfile(set.getString("profile"));
+                user.setProfileImage(set.getString("profile"));
                 user.setId(set.getInt("id"));
                 user.setTimestamp(set.getTimestamp("registration_date"));
                 user.setAbout(set.getString("about"));
@@ -64,14 +64,16 @@ public class UserDao {
     public boolean updateUser(User user){
         boolean flag =false;
         try{
-            @SuppressWarnings("SqlNoDataSourceInspection") String query= "update user set name=? , email = ? , gender= ?, about= ? , profile=? where id = ?";
+      @SuppressWarnings("SqlNoDataSourceInspection")
+      String query =
+          "update user set name=? , email = ? , gender= ?, about= ? , profile=? where id = ?";
             PreparedStatement preparedStatement = this.connection.prepareStatement(query);
             //set values
             preparedStatement.setString(1,user.getUsername());
             preparedStatement.setString(2,user.getEmail());
             preparedStatement.setString(3,user.getGender());
             preparedStatement.setString(4,user.getAbout());
-            preparedStatement.setString(5,user.getProfile());
+            preparedStatement.setString(5,user.getProfileImage());
             preparedStatement.setInt(6,user.getId());
 
             preparedStatement.executeUpdate();

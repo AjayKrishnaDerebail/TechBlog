@@ -2,7 +2,6 @@ package com.techblog.entities;
 
 import java.sql.Timestamp;
 
-@SuppressWarnings("unused")
 public class User {
     private int id;
     private String username;
@@ -81,12 +80,12 @@ public class User {
     }
 
 
-    public String getProfile () {
+    public String getProfileImage () {
         return profile;
     }
 
 
-    public void setProfile (String profile) {
+    public void setProfileImage (String profile) {
         this.profile = profile;
     }
 }
