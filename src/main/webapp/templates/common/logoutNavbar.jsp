@@ -1,3 +1,4 @@
+<%@ page import="com.techblog.entities.Message" %>
 <nav class="navbar navbar-expand-lg navbar-dark navbar-background text-white">
     <a href="${pageContext.request.contextPath}/templates/index.jsp" class="navbar-brand">
         <span class="fa fa-area-chart"></span> Techblog</a>
@@ -48,5 +49,17 @@
         </ul>
     </div>
 </nav>
+
+<%
+    Message message=(Message) session.getAttribute("message");
+    if(Objects.nonNull(message)){
+%>
+<div class="alert <%= message.getCssClass()%>" role="alert">
+    <%= message.getContent()%>
+</div>
+<%
+        session.removeAttribute("message");
+    }
+%>
 
 <%@include file="showProfileAndEditProfile.jsp"%>

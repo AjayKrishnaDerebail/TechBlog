@@ -13,7 +13,7 @@
             <div class="modal-body">
                 <div class="container text-center">
                     <img src="${pageContext.request.contextPath}/images/<%= user.getProfileImage()%>"
-                         alt=<%= user.getProfileImage() %> class="img-fluid">
+                         alt="<%= user.getProfileImage() %>" class="img-fluid width-50percent"/>
                     <h5 class="modal-title" id="userNameInModal"><%= user.getUsername() %></h5>
                     <div id="profile-details">
                         <table class="table">
