@@ -35,7 +35,13 @@
                         </div>
                     </div>
                     <%--Posts--%>
-                    <div class="col-md-*"></div>
+                    <div class="col-md-8">
+                        <div class="container text-center" id="loaderPosts">
+                            <span class="fa fa-refresh fa-spin fa-4x"></span>
+                            <h3 class="mt-2">Loading...</h3>
+                        </div>
+                        <div class="container-fluid" id="postsContainer"></div>
+                    </div>
                 </div>
             </div>
         </main>

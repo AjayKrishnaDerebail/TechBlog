@@ -3,11 +3,13 @@ package com.techblog.repositories;
 import com.techblog.entities.Category;
 import com.techblog.entities.Post;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.List;
 
 public class PostDao {
 
@@ -56,8 +58,62 @@ public class PostDao {
         return f;
     }
 
-    public void getAllPosts(){
+    public List<Post> getAllPosts() {
+        List<Post> posts = new ArrayList<>();
+        try {
+            @SuppressWarnings("SqlNoDataSourceInspection")
+            String q = "SELECT * FROM post";
+            try (Statement statement = ConnectionProvider.getConnection().createStatement()) {
+                ResultSet set = statement.executeQuery(q);
+                while (set.next()) {
+                    int postId = set.getInt("postId");
+                    String postTitle = set.getString("postTitle");
+                    String postContent = set.getString("postContent");
+                    String postCode = set.getString("postCode");
+                    String postPic = set.getString("postPic");
+                    Timestamp postDate = set.getTimestamp("postDate");
+                    int categoryId = set.getInt("categoryId");
+                    int userId = set.getInt("userId");
 
+                    Post post = new Post(postId, postTitle, postContent, postCode,
+                            postPic, postDate, categoryId, userId);
+                    posts.add(post);
+                }
+            }
+        } catch (SQLException e) {
+        //noinspection CallToPrintStackTrace
+        e.printStackTrace();
+        }
+        return posts;
+    }
+
+    public List<Post> getPostsByCategoryId(int catId) {
+        List<Post> posts = new ArrayList<>();
+        try {
+            @SuppressWarnings("SqlNoDataSourceInspection")
+            String q = "SELECT * FROM post where categoryId = ?";
+            try (PreparedStatement statement = ConnectionProvider.getConnection().prepareStatement(q)) {
+                statement.setInt(1, catId);
+                ResultSet set = statement.executeQuery(q);
+                while (set.next()) {
+                    int postId = set.getInt("postId");
+                    String postTitle = set.getString("postTitle");
+                    String postContent = set.getString("postContent");
+                    String postCode = set.getString("postCode");
+                    String postPic = set.getString("postPic");
+                    Timestamp postDate = set.getTimestamp("postDate");
+                    int userId = set.getInt("userId");
+
+                    Post post = new Post(postId, postTitle, postContent, postCode,
+                            postPic, postDate,catId, userId);
+                    posts.add(post);
+                }
+            }
+        } catch (SQLException e) {
+            //noinspection CallToPrintStackTrace
+            e.printStackTrace();
+        }
+        return posts;
     }
 
 }

@@ -34,7 +34,7 @@ public class AddPostServlet extends HttpServlet {
                 userId = 1;
             }
 
-            Post post = new Post(postTitle,postContent,postCode,file.getName(),null,categoryId,userId);
+            Post post = new Post(postTitle,postContent,postCode,file.getSubmittedFileName(),null,categoryId,userId);
 
             PostDao postDao = new PostDao();
             if(postDao.savePost(post)){

@@ -5,6 +5,7 @@ $(document).ready(function() {
     registrationFormValidation();
     editProfile();
     addPostForm();
+    loadPosts();
 });
 
 function editProfile(){
@@ -78,7 +79,7 @@ function addPostForm(){
             success: function (data,textStatus,jqXHR){
                 console.log("Success");
                 console.log(data);
-                if(data.trim()==="done"){
+                if(data.trim()==="Done"){
                     swal({text: "Post added successfully",icon: "success",});
                 }else{
                     swal(`Failure`);
@@ -92,4 +93,18 @@ function addPostForm(){
             contentType: false
         })
     });
+}
+
+function loadPosts(){
+    $.ajax({
+        url: contextPath + "/templates/loadPosts.jsp",
+        success: function (data,textStatus,jqXHR){
+            console.log("Success");
+            $("#loaderPosts").hide();
+            $("#postsContainer").html(data);
+        },
+        error:function (data,textStatus,jqXHR) {
+            console.log("Error")
+        }
+    })
 }
