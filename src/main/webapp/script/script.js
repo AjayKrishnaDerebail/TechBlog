@@ -5,7 +5,7 @@ $(document).ready(function() {
     registrationFormValidation();
     editProfile();
     addPostForm();
-    loadPosts();
+    loadPosts(0);
 });
 
 function editProfile(){
@@ -95,9 +95,11 @@ function addPostForm(){
     });
 }
 
-function loadPosts(){
+function loadPosts(categoryId){
+    $("#loaderPosts").show();
     $.ajax({
         url: contextPath + "/templates/loadPosts.jsp",
+        data: {categoryId:categoryId},
         success: function (data,textStatus,jqXHR){
             console.log("Success");
             $("#loaderPosts").hide();

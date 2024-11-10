@@ -94,7 +94,7 @@ public class PostDao {
             String q = "SELECT * FROM post where categoryId = ?";
             try (PreparedStatement statement = ConnectionProvider.getConnection().prepareStatement(q)) {
                 statement.setInt(1, catId);
-                ResultSet set = statement.executeQuery(q);
+                ResultSet set = statement.executeQuery();
                 while (set.next()) {
                     int postId = set.getInt("postId");
                     String postTitle = set.getString("postTitle");

@@ -28,7 +28,7 @@
                             <%
                                 for(Category category : categories) {
                             %>
-                            <a href="#" onclick="loadPosts(<%= category.getCategoryId()%>)"
+                            <a href="#" onclick="loadPosts(<%= category.getCategoryId()%>, this)"
                                class="list-group-item list-group-item-action"><%= category.getCategoryName() %>
                             </a>
                             <%
