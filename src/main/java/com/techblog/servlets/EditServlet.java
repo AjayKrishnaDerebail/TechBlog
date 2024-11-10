@@ -21,9 +21,7 @@ import java.util.Objects;
 @MultipartConfig
 public class EditServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        PrintWriter out = response.getWriter();
-        response.setContentType("text/html");
+        response.setContentType("text/html;charset=UTF-8");
 
         String name = request.getParameter("userName");
         String email = request.getParameter("userEmail");
@@ -51,29 +49,30 @@ public class EditServlet extends HttpServlet {
         //Save in database
         UserDao userDao = new UserDao(ConnectionProvider.getConnection());
         boolean result = userDao.updateUser(user);
-
-        HttpSession session = request.getSession();
-        if(result){
-            out.println("Update success");
-            String realPath = request.getServletContext().getRealPath("/")
-              + "images"
-              + File.separator
-              + user.getProfileImage();
-            String oldFilePath = request.getServletContext().getRealPath("/")
-                    + "images"
-                    + File.separator
-                    + oldFile;
-            if (!oldFile.equals("profile.png")) {
-                ProfileImageUploadHelper.deleteFile(oldFilePath);
+        try(PrintWriter out = response.getWriter()){
+            HttpSession session = request.getSession();
+            if(result){
+                out.println("Update success");
+                String realPath = request.getServletContext().getRealPath("/")
+                        + "images"
+                        + File.separator
+                        + user.getProfileImage();
+                String oldFilePath = request.getServletContext().getRealPath("/")
+                        + "images"
+                        + File.separator
+                        + oldFile;
+                if (!oldFile.equals("profile.png")) {
+                    ProfileImageUploadHelper.deleteFile(oldFilePath);
+                }
+                ProfileImageUploadHelper.saveFile(part.getInputStream(), realPath);
+                Message message = new Message("Profile Updated","success","alert alert-success");
+                session.setAttribute("message",message);
+            } else {
+                out.println("Update failure");
+                Message message = new Message("Profile Update Failed","error","alert alert-danger");
+                session.setAttribute("message",message);
             }
-            ProfileImageUploadHelper.saveFile(part.getInputStream(), realPath, out);
-            Message message = new Message("Profile Updated","success","alert alert-success");
-            session.setAttribute("message",message);
-        } else {
-            out.println("Update failure");
-            Message message = new Message("Profile Update Failed","error","alert alert-danger");
-            session.setAttribute("message",message);
+            response.sendRedirect(request.getContextPath() + "/templates/profile.jsp");
         }
-        response.sendRedirect(request.getContextPath() + "/templates/profile.jsp");
     }
 }

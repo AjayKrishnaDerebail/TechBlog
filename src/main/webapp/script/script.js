@@ -4,6 +4,7 @@ $(document).ready(function() {
     console.log("Page is ready!");
     registrationFormValidation();
     editProfile();
+    addPostForm();
 });
 
 function editProfile(){
@@ -60,5 +61,35 @@ function registrationFormValidation(){
             processData: false,
             contentType: false
         });
+    });
+}
+
+
+function addPostForm(){
+    $("#addPostForm").on("submit", function(event) {
+        event.preventDefault();
+        let formData = new FormData(this);
+        console.log(formData);
+
+        $.ajax({
+            url: contextPath + "/addPostServlet",
+            data: formData,
+            type: "POST",
+            success: function (data,textStatus,jqXHR){
+                console.log("Success");
+                console.log(data);
+                if(data.trim()==="done"){
+                    swal({text: "Post added successfully",icon: "success",});
+                }else{
+                    swal(`Failure`);
+                }
+            },
+            error:function (data,textStatus,jqXHR) {
+                console.log("Inside error function");
+                swal(`Fatal failure`);
+            },
+            processData: false,
+            contentType: false
+        })
     });
 }

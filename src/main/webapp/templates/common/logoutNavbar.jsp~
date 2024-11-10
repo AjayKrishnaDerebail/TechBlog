@@ -32,6 +32,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="#"><span class="fa fa-address-book-o"></span> Contact us</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><span class="fa fa-asterisk"></span> Contact us</a>
+            </li>
         </ul>
         <ul class="navbar na mr-right list-unstyled">
             <li class="nav-item">

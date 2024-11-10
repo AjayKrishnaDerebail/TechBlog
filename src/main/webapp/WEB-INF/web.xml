@@ -19,6 +19,14 @@
         <servlet-name>editProfileServlet</servlet-name>
         <servlet-class>com.techblog.servlets.EditServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>addPostServlet</servlet-name>
+        <servlet-class>com.techblog.servlets.AddPostServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addPostServlet</servlet-name>
+        <url-pattern>/addPostServlet</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>editProfileServlet</servlet-name>
         <url-pattern>/editProfileServlet</url-pattern>

@@ -14,10 +14,31 @@
         <%@include file="common/headerLinks.jsp"%>
     </head>
     <body>
-        <%@include file="common/logoutNavbar.jsp"%>
-        <%= user.getUsername() %>
-        <br>
-        <%= user.getEmail() %>
+        <%@include file="common/loginNavbar.jsp"%>
+
+        <main>
+            <div class="container">
+                <div class="row">
+                    <%--Categories--%>
+                    <div class="col-md-4">
+                        <div class="list-group mt-4">
+                            <a href="#" class="list-group-item list-group-item-action active">
+                                Categories
+                            </a>
+                            <%
+                                for(Category category : categories) {
+                            %>
+                            <a href="#" class="list-group-item list-group-item-action"><%= category.getCategoryName() %></a>
+                            <%
+                                }
+                            %>
+                        </div>
+                    </div>
+                    <%--Posts--%>
+                    <div class="col-md-*"></div>
+                </div>
+            </div>
+        </main>
 
         <%@include file="common/scriptLinks.jsp"%>
     </body>

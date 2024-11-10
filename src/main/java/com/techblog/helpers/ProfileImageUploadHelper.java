@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
 
 public class ProfileImageUploadHelper {
 
@@ -14,14 +13,18 @@ public class ProfileImageUploadHelper {
     file.delete();
   }
 
-  public static void saveFile(InputStream is, String path, PrintWriter out) {
+  public static void saveFile(InputStream is, String path) {
     try {
       byte[] b = new byte[is.available()];
-      is.read(b);
-      try (FileOutputStream fos = new FileOutputStream(path)) {
-        fos.write(b);
-        fos.flush();
-        out.println("Profile image uploaded successfully");
+      int r = is.read(b);
+      if (r > 0) {
+        try (FileOutputStream fos = new FileOutputStream(path)) {
+          fos.write(b);
+          fos.flush();
+          System.out.println("Profile image uploaded successfully");
+        }
+      }else{
+        System.out.println("No file uploaded");
       }
     } catch (IOException e) {
       throw new RuntimeException(e);
