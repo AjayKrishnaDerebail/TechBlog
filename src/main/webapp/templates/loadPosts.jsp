@@ -25,13 +25,23 @@
     %>
         <div class="col-md-6 mt-4">
             <div class="card">
-                <img class="card-img-top"
+                <img class="card-img-top fixed-size-img"
                      src="${pageContext.request.contextPath}/images/<%= post.getPostPic() %>"
-                     alt="post.getPostPic()">
+                     alt="Post Image">
                 <div class="card-body">
                     <b class="card-title"><%= post.getPostTitle() %></b>
                     <p class="card-text"><%= post.getPostContent() %></p>
-                    <pre><%= post.getPostCode() %></pre>
+                </div>
+                <div class="card-footer primary-background text-center">
+                    <a href="#!"class="btn btn-outline-light btn-sm">
+                        <i class="fa fa-thumbs-o-up"></i>
+                        <span class="like-counter">20</span>
+                    </a>
+
+                    <a href="showBlog.jsp?postId=<%= post.getPostId() %>"
+                       class="btn btn-outline-light btn-sm">Read More...</a>
+                    <a href="#!" class="btn btn-outline-light btn-sm">
+                        <i class="fa fa-commenting-o"></i> <span>20</span>  </a>
                 </div>
             </div>
         </div>
