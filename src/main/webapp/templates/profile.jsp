@@ -22,14 +22,17 @@
                     <%--Categories--%>
                     <div class="col-md-4">
                         <div class="list-group mt-4">
-                            <a href="#" class="list-group-item list-group-item-action active">
+                            <a href="#" class="list-group-item list-group-item-action" style="background-color:limegreen">
                                 Categories
                             </a>
+                            <a href="#" onclick="loadPosts(0,this)"
+                               class="list-group-item list-group-item-action c-link"><span
+                                    class="fa fa-asterisk"></span> All posts</a>
                             <%
                                 for(Category category : categories) {
                             %>
-                            <a href="#" onclick="loadPosts(<%= category.getCategoryId()%>)"
-                               class="list-group-item list-group-item-action"><%= category.getCategoryName() %>
+                            <a href="#" onclick="loadPosts(<%= category.getCategoryId()%>,this)"
+                               class="list-group-item list-group-item-action c-link"><%= category.getCategoryName() %>
                             </a>
                             <%
                                 }

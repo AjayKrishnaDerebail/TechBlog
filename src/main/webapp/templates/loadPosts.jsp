@@ -25,9 +25,10 @@
     %>
         <div class="col-md-6 mt-4">
             <div class="card">
-                <img class="card-img-top" src="${pageContext.request.contextPath}/images/<%= post.getPostPic() %>" alt="post.getPostPic()">
+                <img class="card-img-top"
+                     src="${pageContext.request.contextPath}/images/<%= post.getPostPic() %>"
+                     alt="post.getPostPic()">
                 <div class="card-body">
-                    <%= categoryId %>
                     <b class="card-title"><%= post.getPostTitle() %></b>
                     <p class="card-text"><%= post.getPostContent() %></p>
                     <pre><%= post.getPostCode() %></pre>

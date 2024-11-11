@@ -5,7 +5,8 @@ $(document).ready(function() {
     registrationFormValidation();
     editProfile();
     addPostForm();
-    loadPosts(0);
+    let allPostsRef = $('.c-link')[0];
+    loadPosts(0,allPostsRef);
 });
 
 function editProfile(){
@@ -95,8 +96,9 @@ function addPostForm(){
     });
 }
 
-function loadPosts(categoryId){
+function loadPosts(categoryId,reference){
     $("#loaderPosts").show();
+    $(".c-link").removeClass('active');
     $.ajax({
         url: contextPath + "/templates/loadPosts.jsp",
         data: {categoryId:categoryId},
@@ -104,6 +106,7 @@ function loadPosts(categoryId){
             console.log("Success");
             $("#loaderPosts").hide();
             $("#postsContainer").html(data);
+            $(reference).addClass('active');
         },
         error:function (data,textStatus,jqXHR) {
             console.log("Error")
