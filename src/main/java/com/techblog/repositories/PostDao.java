@@ -116,4 +116,33 @@ public class PostDao {
         return posts;
     }
 
+    public Post getPostByPostId(int post_Id) {
+        Post post = null;
+        try {
+            @SuppressWarnings("SqlNoDataSourceInspection")
+            String q = "SELECT * FROM post where postId = ?";
+            try (PreparedStatement statement = ConnectionProvider.getConnection().prepareStatement(q)) {
+                statement.setInt(1, post_Id);
+                ResultSet set = statement.executeQuery();
+                while (set.next()) {
+                    int postId = set.getInt("postId");
+                    String postTitle = set.getString("postTitle");
+                    String postContent = set.getString("postContent");
+                    String postCode = set.getString("postCode");
+                    String postPic = set.getString("postPic");
+                    Timestamp postDate = set.getTimestamp("postDate");
+                    int catId = set.getInt("categoryId");
+                    int userId = set.getInt("userId");
+
+                    post = new Post(postId, postTitle, postContent, postCode,
+                            postPic, postDate,catId, userId);
+                }
+            }
+        } catch (SQLException e) {
+            //noinspection CallToPrintStackTrace
+            e.printStackTrace();
+        }
+        return post;
+    }
+
 }
