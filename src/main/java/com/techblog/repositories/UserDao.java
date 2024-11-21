@@ -63,10 +63,9 @@ public class UserDao {
 
     public boolean updateUser(User user){
         boolean flag =false;
-        try{
-      @SuppressWarnings("SqlNoDataSourceInspection")
-      String query =
-          "update user set name=? , email = ? , gender= ?, about= ? , profile=? where id = ?";
+        try {
+            @SuppressWarnings("SqlNoDataSourceInspection")
+            String query = "update user set name=? , email = ? , gender= ?, about= ? , profile=? where id = ?";
             PreparedStatement preparedStatement = this.connection.prepareStatement(query);
             //set values
             preparedStatement.setString(1,user.getUsername());
@@ -79,10 +78,35 @@ public class UserDao {
             preparedStatement.executeUpdate();
             flag = true;
 
-        }catch (SQLException e){
+        } catch (SQLException e){
             //noinspection CallToPrintStackTrace
             e.printStackTrace();
         }
         return flag;
+    }
+
+    public User getUserById(int userId){
+        User user = null;
+        try {
+            @SuppressWarnings("SqlNoDataSourceInspection")
+            String query = "select * from user where id = ?";
+            PreparedStatement statement = this.connection.prepareStatement(query);
+            statement.setInt(1,userId);
+            ResultSet set = statement.executeQuery();
+            while (set.next()){
+                user = new User();
+                user.setId(set.getInt("id"));
+                user.setUsername(set.getString("name"));
+                user.setEmail(set.getString("email"));
+                user.setProfileImage(set.getString("profile"));
+                user.setTimestamp(set.getTimestamp("registration_date"));
+                user.setAbout(set.getString("about"));
+                user.setGender(set.getString("gender"));
+            }
+        } catch (SQLException e){
+            //noinspection CallToPrintStackTrace
+            e.printStackTrace();
+        }
+        return user;
     }
 }

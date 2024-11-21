@@ -32,3 +32,34 @@
     object-fit: cover;
     border-radius: 8px;
 }
+
+.post-title{
+    font-weight: 100;
+    font-size: 30px;
+}
+
+.post-content{
+    font-weight: 100;
+    font-size: 25px;
+}
+
+.post-date{
+    font-style: italic;
+    font-weight: bold;
+}
+
+.post-user-info{
+    font-weight: bold;
+}
+
+.container-user-info{
+    border: 1px solid #e2e2e2;
+}
+
+.no-wrap{
+    white-space: nowrap;
+}
+
+.body-background {
+    background-image: url(../images/profileBg.png);
+}
