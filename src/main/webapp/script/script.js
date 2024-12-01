@@ -109,7 +109,28 @@ function loadPosts(categoryId,reference){
             $(reference).addClass('active');
         },
         error:function (data,textStatus,jqXHR) {
-            console.log("Error")
+            console.log("Error");
         }
+    })
+}
+
+function doLike(postId,userId){
+    console.log(postId + " " +userId);
+    const d = {
+        userId:userId,
+        postId:postId,
+        operation:'like'
+    }
+
+    $.ajax({
+        type: "POST",
+        url: contextPath +"/likeServlet",
+        data: d,
+        success : function (data,textStatus,jqXHR){
+            console.log(data);
+        },
+        error : function (data,textStatus,errorThrown){
+            console.log(errorThrown);
+        },
     })
 }

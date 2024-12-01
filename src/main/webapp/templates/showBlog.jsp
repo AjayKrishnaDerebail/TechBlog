@@ -60,7 +60,7 @@
                                 </div>
                             </div>
                             <div class="card-footer primary-background text-white text-right">
-                                <a href="#" class="btn btn-outline-light btn-sm mr-2">
+                                <a href="#" onclick="doLike(<%= post.getPostId() %>, <%= user.getId() %>)" class="btn btn-outline-light btn-sm mr-2">
                                     <i class="fa fa-thumbs-o-up"></i>
                                     <span class="like-counter">20</span>
                                 </a>
@@ -73,8 +73,11 @@
                     </div>
                 </div>
             </div>
+            <div class="text-right">
+                <a href="${pageContext.request.contextPath}/templates/profile.jsp"
+                   class="btn btn-danger btn-lg text-white ml-auto">Go Back</a>
+            </div>
         </main>
-
-        <%@include file="common/scriptLinks.jsp"%>
+    <%@include file="common/scriptLinks.jsp"%>
     </body>
 </html>
