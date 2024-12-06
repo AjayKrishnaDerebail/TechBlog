@@ -129,10 +129,9 @@ function doLike(postId,userId){
         success : function (data,textStatus,jqXHR){
             console.log(data);
             if(data.trim()==="true"){
-                let $likeCounter = $(".like-counter");
-                let classOfLike = parseInt($likeCounter.html());
+                let classOfLike = parseInt($(".like-counter").html());
                 classOfLike++;
-                $likeCounter.html(classOfLike);
+                $(".like-counter").html(classOfLike);
             }
         },
         error : function (data,textStatus,errorThrown){

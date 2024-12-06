@@ -28,7 +28,7 @@ public class LikeDao {
         return flag;
     }
 
-    public int countLikeOnPost(int postId){
+    public int countLike(int postId){
         int count = 0;
         @SuppressWarnings("SqlNoDataSourceInspection")
         String q = "select count(*) from likes where postId=?";

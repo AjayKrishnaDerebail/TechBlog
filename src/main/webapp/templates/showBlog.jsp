@@ -4,6 +4,7 @@
 <%@ page import="com.techblog.repositories.UserDao" %>
 <%@ page import="com.techblog.repositories.ConnectionProvider" %>
 <%@ page import="java.text.DateFormat" %>
+<%@ page import="com.techblog.repositories.LikeDao" %>
 <%@page errorPage="common/errorPage.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%
@@ -59,10 +60,15 @@
                                     <pre><%= post.getPostCode() %></pre>
                                 </div>
                             </div>
+
+                            <%
+                                LikeDao likeDao = new LikeDao(ConnectionProvider.getConnection());
+                            %>
+
                             <div class="card-footer primary-background text-white text-right">
                                 <a href="#" onclick="doLike(<%= post.getPostId() %>, <%= user.getId() %>)" class="btn btn-outline-light btn-sm mr-2">
                                     <i class="fa fa-thumbs-o-up"></i>
-                                    <span class="like-counter">20</span>
+                                    <span class="like-counter"><%= likeDao.countLikeOnPost(post.getPostId())  %></span>
                                 </a>
                                 <a href="#" class="btn btn-outline-light btn-sm mr-0">
                                     <i class="fa fa-commenting-o"></i> <span>20</span>  </a>

@@ -1,8 +1,13 @@
 <%@ page import="com.techblog.repositories.PostDao" %>
 <%@ page import="com.techblog.entities.Post" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.techblog.repositories.ConnectionProvider" %>
+<%@ page import="com.techblog.repositories.LikeDao" %>
+<%@ page import="com.techblog.entities.User" %>
 <div class="row">
     <%
+        User userInSession=(User)session.getAttribute("currentUser");
+
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -32,10 +37,16 @@
                     <b class="card-title"><%= post.getPostTitle() %></b>
                     <p class="card-text"><%= post.getPostContent() %></p>
                 </div>
+
+                <%
+                    LikeDao likeDao = new LikeDao(ConnectionProvider.getConnection());
+                %>
+
                 <div class="card-footer primary-background text-center">
-                    <a href="#" class="btn btn-outline-light btn-sm">
+                    <a href="#" onclick="doLike(<%= post.getPostId() %>, <%= userInSession.getId() %>)"
+                       class="btn btn-outline-light btn-sm mr-2">
                         <i class="fa fa-thumbs-o-up"></i>
-                        <span class="like-counter">20</span>
+                        <span class="like-counter"><%= likeDao.countLikeOnPost(post.getPostId())  %></span>
                     </a>
 
                     <a href="showBlog.jsp?postId=<%= post.getPostId() %>"
