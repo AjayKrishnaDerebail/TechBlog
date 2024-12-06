@@ -126,9 +126,8 @@ function doLike(postId,userId){
         type: "POST",
         url: contextPath +"/likeServlet",
         data: d,
-        success : function (data,textStatus,jqXHR){
-            console.log(data);
-            if(data.trim()==="true"){
+        success : function (data) {
+            if (data.trim() === "true") {
                 let $likeCounter = $(".like-counter");
                 let classOfLike = parseInt($likeCounter.html());
                 classOfLike++;

@@ -67,6 +67,7 @@
 
                             <div class="card-footer primary-background text-white text-right">
                                 <a href="#" <% if(likeDao.isLikedByUser(post.getPostId(), user.getId())){
+                                    out.print("disabled");
                                 } else { %>
                                    onclick="doLike(<%= post.getPostId() %>, <%= user.getId() %>)"
                                    class="btn btn-outline-light btn-sm mr-2">

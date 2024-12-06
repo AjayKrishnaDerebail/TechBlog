@@ -43,8 +43,15 @@
                 %>
 
                 <div class="card-footer primary-background text-center">
-                    <a href="#" onclick="doLike(<%= post.getPostId() %>, <%= userInSession.getId() %>)"
+
+                    <a href="#" <% if(likeDao.isLikedByUser(post.getPostId(), userInSession.getId())){
+                        out.print("disabled");
+                    } else { %>
+                       onclick="doLike(<%= post.getPostId() %>, <%= userInSession.getId() %>)"
                        class="btn btn-outline-light btn-sm mr-2">
+                        <%
+                            }
+                        %>
                         <i class="fa fa-thumbs-o-up"></i>
                         <span class="like-counter"><%= likeDao.countLikeOnPost(post.getPostId())  %></span>
                     </a>
