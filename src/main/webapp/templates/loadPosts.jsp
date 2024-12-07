@@ -44,16 +44,20 @@
 
                 <div class="card-footer primary-background text-center">
 
-                    <a href="#" <% if(likeDao.isLikedByUser(post.getPostId(), userInSession.getId())){
-                        out.print("disabled");
-                    } else { %>
-                       onclick="doLike(<%= post.getPostId() %>, <%= userInSession.getId() %>)"
-                       class="btn btn-outline-light btn-sm mr-2">
-                        <%
-                            }
-                        %>
-                        <i class="fa fa-thumbs-o-up"></i>
-                        <span class="like-counter"><%= likeDao.countLikeOnPost(post.getPostId())  %></span>
+                    <%
+                        boolean isLiked = likeDao.isLikedByUser(post.getPostId(), userInSession.getId());
+                    %>
+                    <a
+                        id="like-btn-<%= post.getPostId() %>"
+                        href="#"
+                        onclick="<%= isLiked ? "doDislike(" + post.getPostId() + ", " + userInSession.getId() + ")"
+                        : "doLike(" + post.getPostId() + ", " + userInSession.getId() + ")" %>"
+                        class="<%= isLiked ? "btn btn-success btn-sm mr-2"
+                        : "btn btn-outline-light btn-sm mr-2" %>">
+                        <i class="<%= isLiked ? "fa fa-thumbs-up" : "fa fa-thumbs-o-up" %>"></i>
+                        <span id="like-counter-<%= post.getPostId() %>" class="like-counter">
+                            <%= likeDao.countLikeOnPost(post.getPostId()) %>
+                        </span>
                     </a>
 
                     <a href="showBlog.jsp?postId=<%= post.getPostId() %>"
