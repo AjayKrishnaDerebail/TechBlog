@@ -114,6 +114,31 @@ function loadPosts(categoryId,reference){
     })
 }
 
+function deletePost(postId) {
+    let f = new FormData();
+    f.append("postId", postId);
+    console.log("FormData: ", f);
+
+    $.ajax({
+        data: f,
+        type: "POST",
+        url: contextPath + "/deletePostServlet",
+        processData: false,
+        contentType: false,
+        success: function (data, textStatus, jqXHR) {
+            console.log("Success deleted post");
+            if (data.redirect) {
+                console.log("Redirecting to: " + data.redirect);
+                window.location.href = data.redirect;
+            }
+        },
+        error: function (data, textStatus, jqXHR) {
+            console.log("Error occurred while deleting post");
+        }
+    });
+}
+
+
 function doLike(postId, userId) {
     console.log("Liking post: " + postId);
     const data = { userId: userId, postId: postId, operation: 'like' };

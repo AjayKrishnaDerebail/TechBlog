@@ -82,7 +82,7 @@
                                     </span>
                                 </a>
                                 <% if(user.getId() == post.getUserId()) { %>
-                                    <a href="deletePost.jsp?postId=<%=post.getPostId()%>" class="btn btn-danger">Delete</a>
+                                    <a href="#" onclick="deletePost(<%= postId %>)" class="btn btn-danger">Delete</a>
                                 <% } %>
                             </div>
                         </div>

@@ -145,4 +145,45 @@ public class PostDao {
         return post;
     }
 
+    public boolean deletePostByPostId(int postId) {
+
+        // Delete likes associated with the post
+        boolean deleteLikesFlag = deleteLikesByPostId(postId);
+        if(deleteLikesFlag){
+            System.out.println("Likes deleted successfully");
+        }
+
+        boolean f = false;
+        try {
+            @SuppressWarnings("SqlNoDataSourceInspection")
+            String q = "delete from post where postId = ?";
+            try (PreparedStatement statement = ConnectionProvider.getConnection().prepareStatement(q)) {
+                statement.setInt(1, postId);
+                statement.executeUpdate();
+                f = true;
+            }
+        } catch (Exception e) {
+            //noinspection CallToPrintStackTrace
+            e.printStackTrace();
+        }
+        return f;
+    }
+
+    public boolean deleteLikesByPostId(int postId) {
+        boolean f = false;
+        try {
+            @SuppressWarnings("SqlNoDataSourceInspection")
+            String q = "delete from likes where postId = ?";
+            try (PreparedStatement statement = ConnectionProvider.getConnection().prepareStatement(q)) {
+                statement.setInt(1, postId);
+                statement.executeUpdate();
+                f = true;
+            }
+        } catch (Exception e) {
+            //noinspection CallToPrintStackTrace
+            e.printStackTrace();
+        }
+        return f;
+    }
+
 }

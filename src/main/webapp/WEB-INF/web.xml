@@ -27,6 +27,14 @@
         <servlet-name>likeServlet</servlet-name>
         <servlet-class>com.techblog.servlets.LikeServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>deletePostServlet</servlet-name>
+        <servlet-class>com.techblog.servlets.DeletePostServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deletePostServlet</servlet-name>
+        <url-pattern>/deletePostServlet</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>likeServlet</servlet-name>
         <url-pattern>/likeServlet</url-pattern>
