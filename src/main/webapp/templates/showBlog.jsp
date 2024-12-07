@@ -78,11 +78,9 @@
                                     : "btn btn-outline-light btn-sm mr-2" %>">
                                     <i class="<%= isLiked ? "fa fa-thumbs-up" : "fa fa-thumbs-o-up" %>"></i>
                                     <span id="like-counter-<%= post.getPostId() %>" class="like-counter">
-                                    <%= likeDao.countLikeOnPost(post.getPostId()) %>
+                                        <%= likeDao.countLikeOnPost(post.getPostId()) %>
                                     </span>
                                 </a>
-                                <a href="#" class="btn btn-outline-light btn-sm mr-0">
-                                    <i class="fa fa-commenting-o"></i> <span>20</span>  </a>
                             <%--<a href="editPost.jsp?postId=<%=post.getPostId()%>" class="btn btn-primary">Edit</a>
                                 <a href="deletePost.jsp?postId=<%=post.getPostId()%>" class="btn btn-danger">Delete</a>--%>
                             </div>

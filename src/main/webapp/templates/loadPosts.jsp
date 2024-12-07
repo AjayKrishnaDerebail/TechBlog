@@ -9,7 +9,7 @@
         User userInSession=(User)session.getAttribute("currentUser");
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -59,11 +59,8 @@
                             <%= likeDao.countLikeOnPost(post.getPostId()) %>
                         </span>
                     </a>
-
                     <a href="showBlog.jsp?postId=<%= post.getPostId() %>"
                        class="btn btn-outline-light btn-sm">Read More...</a>
-                    <a href="#" class="btn btn-outline-light btn-sm">
-                        <i class="fa fa-commenting-o"></i> <span>20</span>  </a>
                 </div>
             </div>
         </div>
