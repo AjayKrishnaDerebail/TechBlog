@@ -24,7 +24,7 @@
                     </button>
                     <a href="${pageContext.request.contextPath}/templates/login.jsp"
                        class="btn btn-outline-light btn-lg">
-                        <span class="fa fa-user-circle"></span> Login
+                        <span class="fa fa-user-circle fa-spin"></span> Login
                     </a>
                     <a href="${pageContext.request.contextPath}/templates/register.jsp"
                        class="btn btn-outline-light btn-lg">
