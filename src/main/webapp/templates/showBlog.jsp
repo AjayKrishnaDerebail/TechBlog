@@ -19,7 +19,7 @@
     Post post = postDaoInShowBlogPage.getPostByPostId(postId);
 
     UserDao userDao = new UserDao(ConnectionProvider.getConnection());
-    user = userDao.getUserById(post.getUserId());
+    User userWhoHasPostedThisPost = userDao.getUserById(post.getUserId());
 
 %>
 
@@ -48,7 +48,7 @@
                                 <br>
                                 <div class="row container-user-info">
                                     <div class="col-md-8">
-                                        <p class="post-user-info"><a href="#"><%= user.getUsername() %> </a>has posted  </p>
+                                        <p class="post-user-info"><a href="#"><%= userWhoHasPostedThisPost.getUsername() %> </a>has posted  </p>
                                     </div>
                                     <div class="col-md-4 no-wrap mr-4">
                                         <p class="post-date"><%= DateFormat.getDateTimeInstance().format(post.getPostDate()) %></p>
@@ -81,8 +81,9 @@
                                         <%= likeDao.countLikeOnPost(post.getPostId()) %>
                                     </span>
                                 </a>
-                            <%--<a href="editPost.jsp?postId=<%=post.getPostId()%>" class="btn btn-primary">Edit</a>
-                                <a href="deletePost.jsp?postId=<%=post.getPostId()%>" class="btn btn-danger">Delete</a>--%>
+                                <% if(user.getId() == post.getUserId()) { %>
+                                    <a href="deletePost.jsp?postId=<%=post.getPostId()%>" class="btn btn-danger">Delete</a>
+                                <% } %>
                             </div>
                         </div>
                     </div>
