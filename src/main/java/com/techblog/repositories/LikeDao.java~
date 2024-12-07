@@ -71,7 +71,7 @@ public class LikeDao {
         boolean f = false;
         try {
             @SuppressWarnings("SqlNoDataSourceInspection")
-            String query = "delete from likes where postId=? and userId=?";
+            String query = "delete from liked where postId=? and userId=?";
             PreparedStatement p = this.connection.prepareStatement(query);
             p.setInt(1, postId);
             p.setInt(2, userId);

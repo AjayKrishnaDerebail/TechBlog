@@ -22,7 +22,6 @@ public class LikeServlet extends HttpServlet {
             out.println(operation);
             out.println(userId);
             out.println(postId);
-
             LikeDao likeDao = new LikeDao(ConnectionProvider.getConnection());
             if (operation.equals("like")) {
                 boolean f=likeDao.insertLike(postId, userId);

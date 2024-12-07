@@ -66,15 +66,20 @@
                             %>
 
                             <div class="card-footer primary-background text-white text-right">
-                                <a href="#" <% if(likeDao.isLikedByUser(post.getPostId(), user.getId())){
-                                } else { %>
-                                   onclick="doLike(<%= post.getPostId() %>, <%= user.getId() %>)"
-                                   class="btn btn-outline-light btn-sm mr-2">
                                 <%
-                                    }
+                                    boolean isLiked = likeDao.isLikedByUser(post.getPostId(), user.getId());
                                 %>
-                                    <i class="fa fa-thumbs-o-up"></i>
-                                    <span class="like-counter"><%= likeDao.countLikeOnPost(post.getPostId())  %></span>
+                                <a
+                                    id="like-btn-<%= post.getPostId() %>"
+                                    href="#"
+                                    onclick="<%= isLiked ? "doDislike(" + post.getPostId() + ", " + user.getId() + ")"
+                                    : "doLike(" + post.getPostId() + ", " + user.getId() + ")" %>"
+                                    class="<%= isLiked ? "btn btn-success btn-sm mr-2"
+                                    : "btn btn-outline-light btn-sm mr-2" %>">
+                                    <i class="<%= isLiked ? "fa fa-thumbs-up" : "fa fa-thumbs-o-up" %>"></i>
+                                    <span id="like-counter-<%= post.getPostId() %>" class="like-counter">
+                                    <%= likeDao.countLikeOnPost(post.getPostId()) %>
+                                </span>
                                 </a>
                                 <a href="#" class="btn btn-outline-light btn-sm mr-0">
                                     <i class="fa fa-commenting-o"></i> <span>20</span>  </a>

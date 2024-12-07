@@ -114,72 +114,55 @@ function loadPosts(categoryId,reference){
     })
 }
 
-function doLike(postId, userId) {
-    console.log(postId + " " + userId);
-
+function doLike(postId,userId){
+    console.log(postId + " " +userId);
     const d = {
-        userId: userId,
-        postId: postId,
-        operation: 'like'
-    };
+        userId:userId,
+        postId:postId,
+        operation:'like'
+    }
 
     $.ajax({
         type: "POST",
-        url: contextPath + "/likeServlet",
+        url: contextPath +"/likeServlet",
         data: d,
-        success: function (data) {
+        success : function (data) {
             if (data.trim() === "true") {
-                // Update the like counter
-                let $likeCounter = $(`#like-counter-${postId}`);
-                let currentCount = parseInt($likeCounter.html());
-                $likeCounter.html(currentCount + 1);
-
-                // Change the button's onclick and style to dislike
-                let $likeButton = $(`#like-btn-${postId}`);
-                $likeButton
-                    .attr("onclick", `doDislike(${postId}, ${userId})`)
-                    .removeClass("btn-outline-light")
-                    .addClass("btn-success")
-                    .html('<i class="fa fa-thumbs-up"></i> Liked');
+                let $likeCounter = $(".like-counter");
+                let classOfLike = parseInt($likeCounter.html());
+                classOfLike++;
+                $likeCounter.html(classOfLike);
             }
         },
-        error: function (data, textStatus, errorThrown) {
-            console.error("Error liking post:", errorThrown);
+        error : function (data,textStatus,errorThrown){
+            console.log(errorThrown);
         },
-    });
+    })
 }
 
-function doDislike(postId, userId) {
-    console.log(postId + " " + userId);
 
+function doDislike(postId,userId){
+    console.log(postId + " " +userId);
     const d = {
-        userId: userId,
-        postId: postId,
-        operation: 'dislike'
-    };
+        userId:userId,
+        postId:postId,
+        operation:'dislike'
+    }
 
     $.ajax({
         type: "POST",
-        url: contextPath + "/likeServlet",
+        url: contextPath +"/likeServlet",
         data: d,
-        success: function (data) {
+        success : function (data) {
             if (data.trim() === "true") {
-                // Update the like counter
-                let $likeCounter = $(`#like-counter-${postId}`);
-                let currentCount = parseInt($likeCounter.html());
-                $likeCounter.html(currentCount - 1);
-
-                // Change the button's onclick and style to like
-                let $likeButton = $(`#like-btn-${postId}`);
-                $likeButton
-                    .attr("onclick", `doLike(${postId}, ${userId})`)
-                    .removeClass("btn-success")
-                    .addClass("btn-outline-light")
-                    .html('<i class="fa fa-thumbs-o-up"></i> Like');
+                let $likeCounter = $(".like-counter");
+                let classOfLike = parseInt($likeCounter.html());
+                classOfLike--;
+                $likeCounter.html(classOfLike);
             }
         },
-        error: function (data, textStatus, errorThrown) {
-            console.error("Error disliking post:", errorThrown);
+        error : function (data,textStatus,errorThrown){
+            console.log(errorThrown);
         },
-    });
+    })
 }
