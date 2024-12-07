@@ -7,7 +7,7 @@ A Java-based web application for tech enthusiasts to share and discuss their kno
 ## Overview
 ------------
 
-TechBlog is a web application built using Java servlets. It allows users to create and share posts on various tech-related topics. The application features user registration, login, profile management, post creation, editing, and deletion.
+TechBlog is a web application built using Java servlets. It allows users to create and share posts on various tech-related topics. The application features user registration, login, profile management, post creation, and deletion.
 
 ## Features
 ------------
