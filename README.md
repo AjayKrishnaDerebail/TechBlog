@@ -47,8 +47,9 @@ TechBlog is a web application built using Java servlets. It allows users to crea
 ## Running the Application
 -------------------------
 
-1. Start Apache Tomcat: `catalina.sh run`
-2. Access the application in your web browser: `http://localhost:8080/techblog`
+1. Add the following configurations for smart tomcat in the run configurations for smart tomcat
+   ![img.png](src/main/webapp/images/READMEimages/img_11.png)
+2. Access the application in your web browser: `http://localhost:8083/techblog`
 
 ## About the application
 
