@@ -1,6 +1,6 @@
 <p align="justify">
 ## TechBlog
-================
+------------
 
 A Java-based web application for tech enthusiasts to share and discuss their knowledge.
 
